@@ -34,7 +34,7 @@ entry.bind('<Return>', lambda e: check_password())
 button = tk.Button(frame, text="UNLOCK", font=("Courier", 12), bg="black", fg="#00ff00", command=check_password)
 button.pack(pady=10)
 
-footer = tk.Label(frame, text="fsociety", font=("Courier", 12), fg="#00ff00", bg="black")
+footer = tk.Label(frame, text="enjoy nigger XD", font=("Courier", 12), fg="#00ff00", bg="black")
 footer.pack(side="bottom", pady=50)
 
 root.bind('<Escape>', lambda e: None)
